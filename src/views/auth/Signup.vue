@@ -27,7 +27,7 @@ export default {
       const res = await signup(email.value, password.value, displayName.value)
       if (!error.value) {
         console.log("User Signed up")
-        router.push({ name: "Home" })
+        router.push({ name: "CreatePlaylist" })
       }
     }
 
