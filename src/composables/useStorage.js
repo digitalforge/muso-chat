@@ -6,7 +6,6 @@ import getUser from "./getUser"
 const { user } = getUser()
 
 const useStorage = () => {
-  console.log(user.value)
   const error = ref(null)
   const url = ref(null)
   const filePath = ref(null)

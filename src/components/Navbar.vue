@@ -5,8 +5,12 @@
       <h1><router-link :to="{ name: 'Home' }">Muso Ninjas</router-link></h1>
       <div class="links">
         <div v-if="user">
+          <span>Welcome {{ user.displayName }}</span>
           <router-link class="btn" :to="{ name: 'CreatePlaylist' }"
             >Create Playlist</router-link
+          >
+          <router-link class="btn" :to="{ name: 'MyPlaylists' }"
+            >My Playlist</router-link
           >
           <button class="btn" @click="handleClick">Logout</button>
         </div>
@@ -32,6 +36,8 @@ export default {
     const router = useRouter()
     const { user } = getUser()
 
+    console.log(user.value.uid)
+
     const handleClick = async () => {
       const res = logout()
       if (!error.value) {
@@ -43,4 +49,12 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+span {
+  font-size: 14px;
+  display: inline-block;
+  marign-right: 16px;
+  padding-right: 16px;
+  border-right: 1px solid #eee;
+}
+</style>

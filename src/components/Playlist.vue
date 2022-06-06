@@ -37,6 +37,7 @@ import getDocument from "@/composables/getDocument"
 import getUser from "@/composables/getUser"
 import { computed } from "@vue/runtime-core"
 import AddSong from "@/components/AddSong"
+import { useRouter } from "vue-router"
 
 export default {
   props: ["id"],
@@ -47,6 +48,8 @@ export default {
     const { removeDoc } = useDocument("playlists", props.id)
     const { deleteImage } = useStorage()
     const { updateDocument } = useDocument("playlists", props.id)
+    const router = useRouter()
+
     const ownership = computed(() => {
       return (
         playlist.value && user.value && user.value.uid == playlist.value.userId
@@ -56,6 +59,8 @@ export default {
     const handleDelete = async () => {
       await removeDoc()
       await deleteImage(playlist.value.filePath)
+
+      router.push({ name: "Home" })
     }
 
     const songDelete = (id) => {

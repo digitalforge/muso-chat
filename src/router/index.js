@@ -4,6 +4,7 @@ import Login from "../views/auth/Login.vue"
 import Signup from "../views/auth/Signup.vue"
 import CreatePlaylist from "../views/playlists/CreatePlaylist.vue"
 import PlaylistDetails from "../views/playlists/PlaylistDetails.vue"
+import MyPlaylists from "../views/playlists/MyPlaylists.vue"
 
 import { auth } from "../firebase/config"
 
@@ -46,6 +47,12 @@ const routes = [
     component: PlaylistDetails,
     beforeEnter: requireAuth,
     props: true,
+  },
+  {
+    path: "/myplaylists/user",
+    name: "MyPlaylists",
+    component: MyPlaylists,
+    beforeEnter: requireAuth,
   },
 ]
 
